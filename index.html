@@ -1,0 +1,237 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>yuqirong云盘</title>
+<link rel="stylesheet" href="css/animate.min.css" />
+<link rel="stylesheet" href="css/index.css" />
+</head>
+<body>
+<div class="yunpan">
+	
+	<!--header 开始-->
+	<div class="header">
+		
+		<!--logo-->
+		<a href="javascript:void(0)" class="logo">
+			<span class="icon"></span>
+		</a>
+
+		<!--工具菜单toolMenu 开始-->
+	    <div class="toolMenu">
+			<!--工具按钮-->
+			<a href="javascript:void(0)" class="download" id="download" title="下载"></a>
+			<a href="javascript:void(0)" class="share" id="share" title="分享"></a>
+			<a href="javascript:void(0)" class="newfolder" id="newfolder" title="新建文件夹"></a>
+			<a href="javascript:void(0)" class="rename" id="rename" title="重命名"></a>
+			<a href="javascript:void(0)" class="cancle" id="cancle" title="删除"></a>
+			<a href="javascript:void(0)" class="move" id="move" title="移动"></a>
+			<a href="javascript:void(0)" class="refresh" id="refresh" title="刷新"></a>
+			<!--切换视图及排序区-->
+			<div class="view">
+				<!--查看目录树-->
+				<a href="javascript:void(0)" class="treeMenu" id="changeView" data-view="list" title="切换视图方式"></a>
+				<!--排序-->
+				<div class="viewdetails" id="viewMode">
+					<a href="javascript:void(0)" class="sortMode" title="排序方式">
+						<i class="icon icon1"></i>
+						<i class="icon icon2"></i>
+					</a>
+					<div class="sortMd_lists">
+						<ul>
+							<li>
+								<a href="javascript:void(0)" class="sort_timer" id="sort_timer" data-sortMode = "up" title="升序">
+									<i class="icon"></i>
+									<span>按时间排序</span>
+								</a>
+							</li>
+							<li>
+								<a href="javascript:void(0)" class="show_thumbnail" id="show_thumbnail">
+									<i class="icon"></i>
+									<span>显示缩略图</span>
+								</a>
+							</li>
+						</ul>
+					</div>
+				</div>
+			</div>
+		</div>
+		<!--工具菜单toolMenu 结束-->
+		
+		<div class="userinfo" id="mainUser-info">
+			<!--user 图标-->
+			<div class="userheder">
+				<a href="javascript:void(0)">
+					<span class="headerPic">
+						<img src="images/pic.jpg" width="40" height="40" />
+					</span>
+					<em class="icon"></em>
+				</a>
+			</div>
+			
+			<!--功能菜单-->
+			<div class="infosTool">
+				<div class="ui-head">
+					<span class="nick_name">yuqirong</span>
+				</div>
+				<ul class="info-menu">
+					<li><a href="javascript:void(0)" style="cursor: not-allowed;">开通会员</a></li>
+					<li><a href="javascript:void(0)" id="sendComments">留言板</a></li>
+					<li><a href="javascript:void(0)" style="cursor: not-allowed;">退出</a></li>
+				</ul>
+			</div>
+		</div>
+
+		<div class="clear"></div>
+	</div>
+	<!--header 结束-->
+
+
+	
+	
+	
+
+	
+	<!--mainContent-->
+	<div class="main" id="mainView">
+		<!--left-->
+		<div class="left treeMenu">
+			<!--树形目录-->
+			<div id="treeMenu"></div>
+		</div>
+		
+		<!--right-->
+		<div class="right" id="panelArea">
+			
+			<!--nav 面包屑导航-->
+			<div class="nav">
+				<div class="navbox">
+					<a href="javascript:void(0)" class="selectFiles" id="selectAllFiles" title="selectAll"></a>
+					<ul id="breadNav"></ul>
+				</div>
+			</div>
+			
+			<!--暂无文件提示-->
+			<div class="noFileTips" id="noFileTips">
+				<div class="nullfile">
+					<span class="icon"></span>
+					<p>暂无文件</p>
+					<p>请点击左上角的“上传”按钮添加</p>
+				</div>
+			</div>
+			
+			<!--视图方式：图标形式-->
+			<div class="view-of-icon" id="view-of-icon">
+				<div class="vi-panel">
+					
+					<!--视图列表-->
+					<div class="toolpanel details" id="filesView" ></div>
+					
+					<!--详细列表-->
+					<div class="fileListView details" id="filesLists"  style="display: none;"></div>
+					
+				</div>
+			</div>
+		</div>
+
+		<div class="clear"></div>
+
+	</div>
+</div>
+
+
+<!--遮盖层-->
+<div class="tm-overlay" id="overlayout"></div>
+
+<!--分享弹窗-->
+<div class="shareS" id="shareS">
+	<div class="shareTle">
+		请选择分享的位置
+		<a class="close"></a>
+	</div>
+	<div class="bdsharebuttonbox" data-tag="share_1">
+		<a class="bds_qzone" data-cmd="qzone" href="javascript:void(0)"  title="分享到朋友圈">朋友圈</a>
+		<a class="bds_weixin" data-cmd="weixin" href="javascript:void(0)" title="分享到微信">微信</a>
+		<a class="bds_sqq" data-cmd="sqq" href="javascript:void(0)"  title="分享给QQ好友">QQ好友</a>
+		<a class="bds_mail" data-cmd="mail" href="javascript:void(0)"  title="用电子邮件分享">电子邮件</a>
+		<a class="bds_more" href="javascript:void(0)" target="_blank" data-cmd="more">更多</a>
+		<script>
+			window._bd_share_config = {
+				common : {
+					bdText : '思念是会生根发芽的花，你越想拔掉它，它长的越结实 ',	
+					bdDesc : '我想对你说些什么呢',	
+					bdUrl : 'http://user.qzone.qq.com/985856962/blog/1278916664'
+				},
+				share : [{
+					"bdSize" : 24
+				}]
+			}
+			with(document)0[(getElementsByTagName('head')[0]||body).appendChild(createElement('script')).src='http://bdimg.share.baidu.com/static/api/js/share.js?cdnversion='+~(-new Date()/36e5)];
+		</script>
+	</div>
+	<div class="cancles">
+		<a href="javascript:void(0)" class="cancle">取消</a>
+	</div>
+</div>
+
+
+<!--移动弹窗-->
+<div class="moveToOther" id="moveToOther">
+	<div class="m_title">
+		<span>请选择移动位置</span>
+		<a href="javascript:void(0)" class="close"></a>
+	</div>
+	<div class="selarea">
+		<div class="fileName">
+			<span class="icon"></span>
+			<span class="name">js基础课程</span>
+		</div>
+		<!--文件目录-->
+		<div class="treeMenuPanel treeMenu" id="treeMenuPanel"> 
+		</div>
+	</div>
+	<div class="btnsCol">
+		<a href="javascript:void(0)" class="sure">确定</a>
+		<a href="javascript:void(0)" class="cancle">取消</a>
+	</div>
+</div>
+
+<!--遮盖层-->
+<div class="tm-overlay" id="messageslay"></div>
+
+
+<!--留言板弹窗-->
+<div class="messages" id="messages" style="display: none;">
+	<div class="titles">
+		<span>留言板:</span>
+		<a href="javscript:void(0)" title="关闭" class="close"></a>
+	</div>			
+	<div class="commentsbox">
+		<div class="say">
+			<textarea class="comment-text" id="comment-text" placeholder="既然来了，那么说点什么吧！"></textarea>
+			<button type="button" class="btn_comment" data-text="发表评论">发表评论</button>
+			<p class="wordcount"><span>还可以输入</span><span class="num" id="CtNum">160</span><span>字</span></p>
+		</div>
+		<!--排列列表-->
+		<div class="comment-lists"></div>
+	</div>
+</div>
+<input type="hidden" id="getPidInput" value="0"/>
+
+
+<script type="text/javascript" src="js/jquery-1.11.1.min.js" ></script>
+<script type="text/javascript" src="js/data.js"></script>
+<script type="text/javascript" src="js/dataControl.js"></script>
+<script type="text/javascript" src="js/template.js"></script>
+<script type="text/javascript" src="js/bh_tips.js"></script>
+<script type="text/javascript" src="js/bh_popup.js"></script>
+<script type="text/javascript" src="js/bh_moves.js"></script>
+<script type="text/javascript" src="js/index.js"></script>
+<script type="text/javascript">
+	$(function(){
+		main();
+	});
+</script>
+</body>
+</html>
